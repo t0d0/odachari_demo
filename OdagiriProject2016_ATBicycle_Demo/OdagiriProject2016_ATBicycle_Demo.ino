@@ -2,7 +2,7 @@
 #include <Wire.h>
 
 int constPulse[9] = {1700, 1630, 1530, 1480, 1430, 1380, 1330, 1260, 1200};
-
+bool up_down;//over stroke用
 #define manuLPin  1
 #define manuRPin  3
 #define braLPin   5
@@ -158,7 +158,7 @@ void loop() {
   //        SerialUSB.println((int)((Gear_Pos * Debug_num) + attach_min + adjust));
   
   CHANGE_Gear();
-//  over_stroke();
+  over_stroke();
   Cadence();
   Speed();
   getAngle();

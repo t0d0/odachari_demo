@@ -1,5 +1,5 @@
 void MT_UP() {
-  if (millis() - beforemills_chat1 >= 150) {
+  if (millis() - beforemills_chat1 >= 350) {
     SerialUSB.println("mtdown");
 
     beforemills_chat1 = millis();
@@ -9,7 +9,7 @@ void MT_UP() {
   }
 }
 void MT_DOWN() {
-  if (millis() - beforemills_chat2 >= 150) {
+  if (millis() - beforemills_chat2 >= 350) {
     SerialUSB.println("mtup");
     beforemills_chat2 = millis();
     stop_time = millis();
