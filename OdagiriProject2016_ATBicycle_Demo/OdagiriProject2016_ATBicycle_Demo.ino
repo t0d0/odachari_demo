@@ -17,7 +17,7 @@ bool up_down;//over stroke用
 #define DATA_NUM 14 // 扱うデータ個数
 
 int recv_data; //シリアル通信用
-
+bool ovs_flag = true;
 int Gear_Pos   = 1;//ギア初期位置
 int Before_Pos = 1;
 //int gear_steps   = 10;//ギア段数

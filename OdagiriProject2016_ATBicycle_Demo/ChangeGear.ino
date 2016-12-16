@@ -15,9 +15,7 @@ void CHANGE_Gear(void) {
 
       //シフトダウン
       if (Before_Pos > Gear_Pos) {
-        //        myservo.writeMicroseconds((int)((Gear_Pos * Debug_num) + attach_min + adjust));
-        //        SerialUSB.println((int)((Gear_Pos * Debug_num) +  adjust + attach_min));
-        myservo.writeMicroseconds(constPulse[9 - Gear_Pos]);
+//        myservo.writeMicroseconds(constPulse[9 - Gear_Pos]);
         SerialUSB.println(constPulse[9 - Gear_Pos]);
 
         up_down = false;
@@ -43,18 +41,30 @@ void CHANGE_Gear(void) {
 }
 
 void over_stroke(void) {
-  if (millis() - shift_start >= 500 && over_strokeflag == true) {
+        myservo.attach(ServoPin);
+
+  if (over_strokeflag == true) {
+//    SerialUSB.println("overstroke");
     //      Serial.println("ovs");
 
     //    myservo.write((int)((Gear_Pos * Debug_num) + adjust ));//overstroke adjust = 3;
-    int servo_seconds = (int)((Gear_Pos * Debug_num) + attach_min +  adjust);
-    if (shift_up) servo_seconds -= 30;
-    else servo_seconds += 30;
-    myservo.writeMicroseconds(constPulse[9 - Gear_Pos] + up_down ? 30 : -30);
+//    int servo_seconds = (int)((Gear_Pos * Debug_num) + attach_min +  adjust);
+//    if (shift_up) servo_seconds -= 30;
+//    else servo_seconds += 30;
+    int overVal = 0;
+    if(up_down) overVal = 30;
+    else overVal = -30;
+//    myservo.writeMicroseconds(constPulse[9 - Gear_Pos] + up_down ? 30 : -30);
+    myservo.writeMicroseconds(constPulse[9 - Gear_Pos] + overVal);//up_down ? 30 : -30);
+
 
     //        delay(200);
     if (millis() - shift_start >= 700) {
-      myservo.detach();
+      SerialUSB.println("fuck");
+//      myservo.detach();
+//      ovs_flag = false;
+        myservo.writeMicroseconds(constPulse[9 - Gear_Pos]);
+
       over_strokeflag = false;
     }
   }
