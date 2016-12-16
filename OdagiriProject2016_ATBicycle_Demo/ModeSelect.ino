@@ -30,7 +30,7 @@ void MODE_Select(void) {
 
     else {
       Mode = 6;
-      return;//停止モード
+      return;//停止モード    
     }
   }
   else {

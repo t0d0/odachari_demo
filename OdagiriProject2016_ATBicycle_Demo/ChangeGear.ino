@@ -52,8 +52,8 @@ void over_stroke(void) {
 //    if (shift_up) servo_seconds -= 30;
 //    else servo_seconds += 30;
     int overVal = 0;
-    if(up_down) overVal = 30;
-    else overVal = -30;
+    if(up_down) overVal = 20;
+    else overVal = -20;
 //    myservo.writeMicroseconds(constPulse[9 - Gear_Pos] + up_down ? 30 : -30);
     myservo.writeMicroseconds(constPulse[9 - Gear_Pos] + overVal);//up_down ? 30 : -30);
 

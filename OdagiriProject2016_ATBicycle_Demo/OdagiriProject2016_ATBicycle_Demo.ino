@@ -1,17 +1,17 @@
 #include <Servo.h>
 #include <Wire.h>
 
-int constPulse[9] = {1700, 1630, 1530, 1480, 1430, 1380, 1330, 1260, 1200};
+int constPulse[9] = {1700, 1630, 1570, 1490, 1450, 1400, 1330, 1280, 1200};
 bool up_down;//over stroke用
-#define manuLPin  1
-#define manuRPin  3
+#define manuLPin  3
+#define manuRPin  1
 #define braLPin   5
 #define braRPin   7
 #define cadPin    9
 #define spePin   11
 #define ServoPin 13
 #define serialToggle 12
-
+  
 // コンフィグ用
 #define EPR_ADDR 0x51  // EEPROM address A2=Low,A1=Low,A0=HIGH
 #define DATA_NUM 14 // 扱うデータ個数
@@ -44,7 +44,7 @@ unsigned long beforemills_cad = 0;
 unsigned long beforemills_speed   = 0;
 unsigned long beforemills_chat1 = 0;
 unsigned long beforemills_chat2 = 0;
-unsigned long stop_time = 0;
+unsigned long stop_time = 10000;
 unsigned long shift_start = 0;
 unsigned long stoper = 0;
 unsigned long shift_once = 0;
@@ -168,7 +168,7 @@ void loop() {
   //    Serial.println(Before_Pos);
 //    SerialUSB.println("test");
 
-  if (millis() - stop_time > 200000) { //マニュアル変速があった場合、20秒自動変速停止
+  if (millis() - stop_time > 2000) { //マニュアル変速があった場合、20秒自動変速停止
     if (millis() - stoper > 300) {
       noInterrupts();//割込み禁止
       MODE_Select();

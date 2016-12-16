@@ -3,8 +3,8 @@ void Speed(void) {
   if (digitalRead(spePin) == HIGH && millis() - beforemills_speed > 75) {
     wheel_speed = millis() - beforemills_speed;
     beforemills_speed = millis();
-//    SerialUSB.print("wheel_speed>");
-//    SerialUSB.println(SPEED(wheel_speed));
+    SerialUSB.print("wheel_speed>");
+    SerialUSB.println(SPEED(wheel_speed));
   }
 }
 
@@ -13,8 +13,8 @@ void Cadence(void) {
   if (digitalRead(cadPin) == HIGH && millis() - beforemills_cad > 300) {
     cadence = millis() - beforemills_cad;
     beforemills_cad = millis();
-//    SerialUSB.print("cadence>");
-//    SerialUSB.println(cadence);
+    SerialUSB.print("cadence>");
+    SerialUSB.println(cadence);
 
   }
   else if (millis() - beforemills_cad >= 10000) {
